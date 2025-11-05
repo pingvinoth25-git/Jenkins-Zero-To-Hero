@@ -22,6 +22,8 @@ pipeline {
         docker { image 'mysql:latest' }
       }
       steps {
-        sh 'select * from dual'
+        sh 'mysql --version'
+      }
+    }
   }
 }
