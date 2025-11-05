@@ -1,34 +1,14 @@
 pipeline {
-  agent none
+  agent any
   stages {
     stage('Back-end') {
-      agent {
-        docker { image 'maven:3.8.1-adoptopenjdk-11' }
-      }
-      steps {
-        git branch: 'main', url: 'https://github.com/pingvinoth25-git/Jenkins-Zero-To-Hero'
-        sh 'mvn --version'
-      }
+      steps { sh 'mvn --version' }
     }
-
     stage('Front-end') {
-      agent {
-        docker { image 'node:16-alpine' }
-      }
-      steps {
-        git branch: 'main', url: 'https://github.com/pingvinoth25-git/Jenkins-Zero-To-Hero'
-        sh 'node --version'
-      }
+      steps { sh 'node --version' }
     }
-
     stage('DB') {
-      agent {
-        docker { image 'mysql:latest' }
-      }
-      steps {
-        git branch: 'main', url: 'https://github.com/pingvinoth25-git/Jenkins-Zero-To-Hero'
-        sh 'mysql --version'
-      }
+      steps { sh 'mysql --version' }
     }
   }
 }
