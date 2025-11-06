@@ -1,26 +1,10 @@
 pipeline {
-  agent {
-    docker { image 'openjdk:17-alpine' }
-  }
+  agent any
   stages {
-    stage('Build and Run') {
+    stage('Hello') {
       steps {
-        sh '''
-          echo "Compiling Java program..."
-          javac HelloWorld.java
-
-          echo "Running program..."
-          java HelloWorld
-        '''
+        echo 'Hello, World from Jenkins Pipeline by Vinoth!'
       }
-    }
-  }
-  post {
-    success {
-      echo "✅ Build completed successfully!"
-    }
-    failure {
-      echo "❌ Build failed!"
     }
   }
 }
